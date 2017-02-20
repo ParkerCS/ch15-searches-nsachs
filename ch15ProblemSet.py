@@ -9,11 +9,14 @@ from class and from Ch15 of the textbook website
 import re
 file = open("dictionary.txt", "r")
 text_list = []
+highest = 0
+
 
 for word in file:
-    if (len(word)) >= 25:
-        print(word)
-
+    if (len(word)) >= highest:
+        highest = len(word)
+        longest_word = word
+print(longest_word)
 
 
 #2.  (10pts)  Write code which finds
