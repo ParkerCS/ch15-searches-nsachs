@@ -67,7 +67,6 @@ for line in file:
             sevens += 1
 print("There are", sevens, "words with seven letters in Alice In Wonderland!")
 
-
 # Challenge problem (for fun).  What words appear in the text of "Alice in Wonderland" that DO NOT occur in "Alice Through the Looking Glass".  Make a list.  You can substitute this for any of the above problems.
 
 
