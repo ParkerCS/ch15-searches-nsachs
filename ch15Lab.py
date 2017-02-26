@@ -10,42 +10,56 @@ def split_line(line):
 file = open("dictionary.txt", "r")
 dictionary_list = []
 for line in file:
-    dictionary_list.append(line)
+    dictionary_list.append(line.strip())
 file.close()
 
 print("------Linear Search------")
 
-file2 = open("AliceInWonderLand200.txt")
+file2 = open("AliceInWonderLand200.txt", "r")
 text_list = []
 def spell_check(file2):
     for line in file2:
         words = split_line(line)
-        text_list.append(words)
+        #text_list.append(words)
         for word in words:
-            #text_list.append(word)
             key = word.upper()
-            while line in dictionary_list != key:
-                print(line, "is an incorrect word.")
-
-
-#found = True
-#while not found:
-#print(word.upper)
+            for i in range(len(dictionary_list)):
+                #print(dictionary_list[i])
+                if dictionary_list[i] == key:
+                    break
+            else:
+                print(key, "is not found.")
 
 spell_check(file2)
-
-'''
-            key = file2
-
-            # cycle through index while it is not == key and check it i is less that len(list)
-            while word[words] != key and words < len(words):
-                words += 1
-
-            if words < len(word):
-                print("Found", key, "at position", words)  # that means you found it at position
-            else:
-                print("Key is not in list")  # else means you didn't find it
-'''
+print()
 
 print("------Binary Search------")
 
+file3 = open("AliceInWonderLand200.txt", "r")
+
+found = False
+
+for line in file3:
+    line_number = 0
+    lower_bound = 0
+    upper_bound = len(dictionary_list) - 1
+    words = split_line(line)
+    line_number += 1
+    for word in words:
+        key = word.upper()
+        while lower_bound <= upper_bound and not found:
+            middle_position = (lower_bound + upper_bound) // 2
+            if dictionary_list[middle_position].upper() < key.upper():
+                lower_bound += middle_position + 1
+            elif dictionary_list[middle_position].upper() > key.upper():
+                upper_bound -= middle_position - 1
+            else:
+                found = True
+                #print(word,'on line number', line_number, 'was not found in the dictionary.')
+        if not found:
+            print(word, "on line number", line_number, "was not found in the dictionary.")
+
+
+file3.close()
+
+#Not quite sure why it doesn't fully work
