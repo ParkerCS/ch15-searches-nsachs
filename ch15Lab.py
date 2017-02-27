@@ -38,21 +38,22 @@ print("------Binary Search------")
 file3 = open("AliceInWonderLand200.txt", "r")
 
 found = False
+line_number = 0
 
 for line in file3:
-    line_number = 0
-    lower_bound = 0
-    upper_bound = len(dictionary_list) - 1
     words = split_line(line)
     line_number += 1
     for word in words:
+        lower_bound = 0
+        upper_bound = len(dictionary_list) - 1
+        found = False
         key = word.upper()
         while lower_bound <= upper_bound and not found:
             middle_position = (lower_bound + upper_bound) // 2
             if dictionary_list[middle_position].upper() < key.upper():
-                lower_bound += middle_position + 1
+                lower_bound = middle_position + 1
             elif dictionary_list[middle_position].upper() > key.upper():
-                upper_bound -= middle_position - 1
+                upper_bound = middle_position - 1
             else:
                 found = True
                 #print(word,'on line number', line_number, 'was not found in the dictionary.')
@@ -61,5 +62,6 @@ for line in file3:
 
 
 file3.close()
+
 
 #Not quite sure why it doesn't fully work
